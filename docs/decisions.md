@@ -47,3 +47,9 @@ Manifest、Service Worker、图标和离线缓存由 `vite-plugin-pwa` 生成。
 ## D-011：上一题使用会话内快照
 
 上一题/下一题导航只在当前页面会话中保存题目快照，包括运算卡、步骤历史、选择状态、提示、计时和结算状态。刷新后仍按既有边界从新题开始，不扩大 localStorage 数据结构。返回已结算题时保持只读，避免统计重复累计；返回未结算题可继续作答。
+
+## D-012：主分支通过 GitHub Actions 部署 Pages
+
+Pull Request 和 `main` 推送统一在 Ubuntu runner 上使用 Node.js 22、`npm ci` 和 `npm run check` 验证，避免只依赖开发者本机环境。只有 `main` 检查成功后才允许部署。
+
+站点发布到仓库型 GitHub Pages 地址，因此部署构建显式使用 `/Make24/` base，并只上传 `dist/`。Pages 使用工作流的最小 `pages: write` 与 `id-token: write` 权限，不添加长期 Token 或部署密钥。GitHub Actions 固定到经过核对的提交 SHA，并在注释中记录对应主版本，兼顾供应链安全和后续升级可读性。
