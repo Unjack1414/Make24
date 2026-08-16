@@ -15,6 +15,8 @@ Make24 是纯前端单页面 PWA，没有服务器 API、数据库、登录或�
 
 当前题快照 ↔ 上一题/下一题会话内导航
 
+GitHub push/PR → Linux CI → npm run check
+main 检查通过 → /Make24/ 子路径构建 → Pages artifact → GitHub Pages
 Vite 构建 → Manifest + Service Worker → 安装与离线运行
 ```
 
@@ -44,6 +46,7 @@ Vite 构建 → Manifest + Service Worker → 安装与离线运行
 | `src/storage/stats.ts` | `StatsV1` 默认值、容错加载、持久化和结算累计 |
 | `src/components/` | 无业务算法的展示与辅助交互 |
 | `vite.config.ts` | React、Vitest、Manifest、缓存和更新策略 |
+| `.github/workflows/ci-pages.yml` | PR/主分支质量检查及 GitHub Pages 自动部署 |
 
 ## 关键接口
 
@@ -60,7 +63,7 @@ Vite 构建 → Manifest + Service Worker → 安装与离线运行
 
 运行时只依赖现代浏览器提供的 DOM、`localStorage`、Web App Manifest 和 Service Worker。构建与测试依赖 Node.js/npm 及 `package.json` 中声明的包。
 
-应用不访问外部 API，不上传答题数据，也不需要密钥。
+应用运行时不访问外部 API，不上传答题数据，也不需要密钥。构建和部署使用 GitHub Actions 提供的短期 `GITHUB_TOKEN` 与 OIDC 权限，不在仓库中保存部署密钥。
 
 ## 已知限制
 

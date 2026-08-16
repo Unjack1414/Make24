@@ -35,6 +35,7 @@
 - `src/storage/`：`StatsV1` 的读取、容错、累计和持久化
 - `src/components/`：统计、帮助、抽屉和 PWA 更新提示
 - `vite.config.ts`：React、测试环境、Manifest 和 Service Worker 配置
+- `.github/workflows/ci-pages.yml`：Linux CI、Pages 子路径构建和主分支自动部署
 
 ## 必须复用的已有能力
 
@@ -54,6 +55,7 @@
 - `src/game/puzzle-bank.json` 是生成产物但需要提交；只通过生成脚本更新，不手工编辑。
 - `StatsV1` 和 `STATS_KEY` 影响已有用户本地数据，不要随意重命名。
 - `vite.config.ts`、图标文件和 `index.html` 共同决定安装及离线能力，修改后必须运行生产构建。
+- GitHub Pages 固定部署在 `/Make24/` 子路径；修改仓库名、域名或工作流时必须同步检查 Vite base、Manifest、Service Worker 和 README 地址。
 - 当前 `App.tsx` 规模仍可维护，不要仅为了“分层”进行无行为收益的大重构。
 
 ## 依赖与配置规则

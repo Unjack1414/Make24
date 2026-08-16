@@ -122,6 +122,23 @@ npm run build -- --base=/make24/
 
 部署平台应把未知前端路径回退到 `index.html`。当前应用只有一个页面，不需要服务器 API。
 
+### GitHub Actions 与 GitHub Pages
+
+仓库包含 `.github/workflows/ci-pages.yml`：
+
+- Pull Request 和推送到 `main` 时执行 `npm ci` 与 `npm run check`
+- 只有 `main` 完整检查通过后才构建并部署 GitHub Pages
+- Pages 构建使用仓库子路径 `--base=/Make24/`
+- 部署产物仅为 `dist/`，不会把源码、依赖或本地文件发布到网站
+
+首次启用时，仓库管理员需要在 GitHub 打开 `Settings → Pages`，将 `Build and deployment → Source` 设置为 `GitHub Actions`。之后推送到 `main` 会自动部署：
+
+```text
+https://unjack1414.github.io/Make24/
+```
+
+可以在仓库的 `Actions` 页面查看检查与部署日志，也可以通过 `CI and deploy GitHub Pages` 工作流的 `Run workflow` 手动重新执行。
+
 ### iPhone 添加到主屏幕
 
 1. 使用 Safari 打开已经部署的 HTTPS 地址。
