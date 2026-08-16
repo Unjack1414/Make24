@@ -16,6 +16,12 @@ export interface Fraction {
   denominator: number
 }
 
+export interface WorkingCard {
+  id: string
+  value: Fraction
+  tokens: ExpressionToken[]
+}
+
 export interface Puzzle {
   id: string
   cards: NumberCard[]
