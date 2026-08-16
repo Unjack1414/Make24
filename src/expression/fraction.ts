@@ -28,3 +28,4 @@ export function calculate(left: Fraction, operator: Operator, right: Fraction): 
 
 export const isTwentyFour = (value: Fraction) => value.numerator === 24 * value.denominator
 export const fractionToNumber = (value: Fraction) => value.numerator / value.denominator
+export const fractionToText = (value: Fraction) => value.denominator === 1 ? String(value.numerator) : `${value.numerator}/${value.denominator}`
