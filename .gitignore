@@ -8,6 +8,7 @@ dev-dist/
 coverage/
 .pnpm-store/
 .vite/
+.vs/
 
 *.log
 npm-debug.log*
